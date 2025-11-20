@@ -127,7 +127,7 @@ onMounted(() => {
 
     <!-- Layout -->
     <main
-      class="max-w-7xl mx-auto mt-10 mb-20 bg-white shadow-2xl rounded-3xl overflow-hidden grid grid-cols-12"
+      class="max-w-7xl mx-auto mt-3 mb-20 bg-white shadow-2xl rounded-3xl overflow-hidden grid grid-cols-12"
     >
       <!-- Sidebar -->
       <aside class="col-span-3 bg-gray-100 p-6 border-r border-gray-200">
@@ -168,9 +168,9 @@ onMounted(() => {
                 @click="setDoc(item.key)"
                 class="w-full flex items-center gap-2 px-3 py-2 text-left text-sm rounded-full transition border"
                 :class="{
-                  'bg-purple-500 text-white border-purple-500 shadow-md':
+                  'bg-teal-500 text-white border-teal-500 shadow-md':
                     currentKey === item.key,
-                  'text-gray-600 border-transparent hover:bg-purple-100 hover:border-purple-300':
+                  'text-gray-600 border-transparent hover:bg-teal-100 hover:border-teal-300':
                     currentKey !== item.key,
                 }"
               >
@@ -192,7 +192,7 @@ onMounted(() => {
       </aside>
 
       <!-- Content -->
-      <section class="col-span-9 p-10">
+      <section class="col-span-9 p-10 flex flex-col">
         <header>
           <div class="text-[11px] uppercase tracking-wider text-gray-400">
             TECH STACK
@@ -205,21 +205,23 @@ onMounted(() => {
           </p>
         </header>
 
-        <!-- <article class="prose max-w-none mt-6" v-html="docHtml" /> -->
+        <!-- ✅ 可捲動內容區 -->
+        <div class="mt-6 flex-1 overflow-y-auto pr-2 max-h-[70vh]">
+          <article
+            class="prose prose-purpleDocs max-w-none prose-headings:scroll-mt-24 prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg prose-a:font-medium"
+            v-html="docHtml"
+          ></article>
+        </div>
 
-        <article
-          class="prose prose-purpleDocs max-w-none mt-6 prose-headings:scroll-mt-24 prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg prose-a:font-medium"
-          v-html="docHtml"
-        />
-
-        <div class="mt-10 flex justify-between items-center border-t pt-5">
+        <!-- 下方導航固定在 section 底部 -->
+        <div class="mt-6 flex justify-between items-center border-t pt-5">
           <button
             type="button"
             class="px-4 py-2 rounded-full border text-sm transition disabled:opacity-40 hover:bg-gray-900 hover:text-white"
             :disabled="!prevDoc"
             @click="goPrev"
           >
-            ⬅️ 上一篇
+            上一篇
           </button>
 
           <div class="text-xs text-gray-500">
@@ -228,7 +230,7 @@ onMounted(() => {
 
           <button
             type="button"
-            class="px-4 py-2 rounded-full border bg-purple-600 text-white text-sm transition disabled:opacity-40 hover:bg-purple-700"
+            class="px-4 py-2 rounded-full border bg-teal-600 text-white text-sm transition disabled:opacity-40 hover:bg-teal-700"
             :disabled="!nextDoc"
             @click="goNext"
           >
