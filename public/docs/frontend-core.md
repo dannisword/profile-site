@@ -4,14 +4,14 @@
 
 ## 1.概述
 ### 依賴套件
-
-* `vue`: 3.x (Reactive, Ref)
-* `lodash`: (cloneDeep)
-* `pinia`: (透過 `useApp` 取得全域資料字典 `dc`)
+- **vue**: 3.x (Reactive, Ref)
+- **lodash**: (cloneDeep)
+- **pinia**: (透過 `useApp` 取得全域資料字典 `dc`)
 
 ### BaseHandle 樣板控制器
 `BaseHandle` Vue 3 Reactivity System 的類別（Class-based State Manager）。  
-主要是實現 **後端驅動 UI (Server-Driven UI)** 的模式，負責將後端回傳的 JSON 配置檔（包含表格定義、表單結構、查詢條件等）解析並映射到前端的響應式狀態中，供 `<AgGridTable>`、`<ElFormCustom>` 或 `<SearchForm>` 等元件使用。
+主要是實現 **後端驅動 UI (Server-Driven UI)** 的模式，負責將後端回傳的 JSON 配置檔 
+包含表格定義、表單結構、查詢條件等，解析並映射到前端的響應式狀態中，供 `<AgGridTable>`、`<ElFormCustom>` 或 `<SearchForm>` 等元件使用。
 
 ### DocumentHandle 業務控制器
 
@@ -53,27 +53,7 @@ DocumentHandle 充當 View 層 (Vue Component) 與 BaseHandle 狀態層之間的
 返回一個包含 BaseHandle 實例和所有業務操作方法的物件。  
 - 狀態與初始化
 
-<table class="doc-table">
-  <tr>
-    <th>方法/屬性</th>
-    <th>類型</th>
-    <th>類型</th>
-  </tr>
-  <tr>
-    <td>BaseHandle (Instance)</td>
-    <td>集中管理響應式狀態 (table, form, search, pagination)。</td>
-  </tr>
-  <tr>
-    <td>DocumentHandle (Composable)</td>
-    <td>業務流程控制：載入配置、資料 CRUD、處理分頁、處理下拉選單選項、處理自訂欄位。</td>
-  </tr>
-  <tr>
-    <td>View (e.g., <BaseRecords>)</td>
-    <td>僅調用 DocumentHandle 提供的函式（如 read, setData）來驅動數據變化。</td>
-  </tr>
-</table>
-
-	|  |  | 說明 |
+	| 方法/屬性 | 類型 | 說明 |
  	|-----|------|------|
 	| instance | BaseHandle | BaseHandle 響應式實例，所有 UI 綁定的狀態都來自於此。|
     | loadDocument(document?: string) | Promise<boolean> | 透過 API (getDocument) 依據 route.name 或指定名稱載入後端配置，並呼叫 instance.map() 進行映射。同時初始化 custom 屬性並載入使用者自訂欄位。|

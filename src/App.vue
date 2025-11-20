@@ -205,7 +205,12 @@ onMounted(() => {
           </p>
         </header>
 
-        <article class="prose max-w-none mt-6" v-html="docHtml" />
+        <!-- <article class="prose max-w-none mt-6" v-html="docHtml" /> -->
+
+        <article
+          class="prose prose-purpleDocs max-w-none mt-6 prose-headings:scroll-mt-24 prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg prose-a:font-medium"
+          v-html="docHtml"
+        />
 
         <div class="mt-10 flex justify-between items-center border-t pt-5">
           <button
