@@ -23,6 +23,12 @@ export const docGroups: DocGroup[] = [
         sub: '前端專案結構與主要技術',
         file: 'docs/frontend-vue3.md'
       },
+            {
+        key: 'frontend-core',
+        title: 'Core 底層元件',
+        sub: '前端專案結構與主要技術',
+        file: 'docs/frontend-core.md'
+      },
       {
         key: 'frontend-api',
         title: '前端 API 串接規範',
